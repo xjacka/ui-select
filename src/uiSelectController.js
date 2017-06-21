@@ -534,11 +534,13 @@ uis.controller('uiSelectCtrl',
           if (containerWidth === 0) {
             return false;
           }
-          var inputWidth = containerWidth - input.offsetLeft;
-          if (inputWidth < 50) inputWidth = containerWidth;
-          ctrl.searchInput.css('width', inputWidth+'px');
+          ctrl.searchInput.css('width', '50px');
+          setTimeout(function(){
+            var inputWidth = Math.max(50, containerWidth - input.offsetLeft - 10);
+            ctrl.searchInput.css('width', inputWidth+'px');
+          }, 0);
           return true;
-        };
+        }
 
     ctrl.searchInput.css('width', '10px');
     $timeout(function() { //Give tags time to render correctly
