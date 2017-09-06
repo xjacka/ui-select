@@ -967,10 +967,11 @@ uis.controller('uiSelectCtrl',
       data = (e.originalEvent || e).clipboardData.getData('text/plain');
     }
 
+    ctrl.activeIndex = -1;
     // Prepend the current input field text to the paste buffer.
     data = ctrl.search + data;
 
-    if (data && data.length > 0) {
+    if (data && data.trim().length > 0) {
       // If tagging try to split by tokens and add items
       if (ctrl.taggingTokens.isActivated) {
         var items = [];
